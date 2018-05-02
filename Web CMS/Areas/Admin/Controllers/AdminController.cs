@@ -6,9 +6,9 @@ using Web_CMS.HelperClass;
 
 namespace Web_CMS.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        // GET: Admin/Home
         public ActionResult Index()
         {
             return View();
