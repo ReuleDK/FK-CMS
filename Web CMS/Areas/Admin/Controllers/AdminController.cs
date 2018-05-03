@@ -1,12 +1,12 @@
-﻿using EntityCms;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Web_CMS.HelperClass;
 
 namespace Web_CMS.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         public ActionResult Index()
@@ -19,7 +19,7 @@ namespace Web_CMS.Areas.Admin.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Registration(User objNewUser)
+        public ActionResult Registration(EntityCms.User objNewUser, int Role)
         {
             try
             {
@@ -30,8 +30,12 @@ namespace Web_CMS.Areas.Admin.Controllers
                     {
                         var keyNew = Helper.GeneratePassword(10);
                         var password = Helper.EncodePassword(objNewUser.Password, keyNew);
+                        var existingRole = context.ObjRoles.Single(x => x.RoleId == Role);
+
                         objNewUser.Password = password;
                         objNewUser.VCode = keyNew;
+                        objNewUser.Roles = new List<EntityCms.Role>();
+                        objNewUser.Roles.Add(existingRole);
                         context.ObjRegisterUser.Add(objNewUser);
                         context.SaveChanges();
                         ModelState.Clear();

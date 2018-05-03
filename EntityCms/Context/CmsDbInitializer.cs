@@ -5,7 +5,7 @@ using EntityCms.Context;
 
 namespace EntityCms
 {
-    public class CmsDbInitializer : DropCreateDatabaseAlways<CmsDbContext>
+    public class CmsDbInitializer : DropCreateDatabaseIfModelChanges<CmsDbContext>
     {
         protected override void Seed(CmsDbContext context)
         {
