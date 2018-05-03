@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Web_CMS.App_Code;
 using Web_CMS.HelperClass;
 
 namespace Web_CMS.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [CustomAuthorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         public ActionResult Index()
