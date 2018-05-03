@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web.Mvc;
 using Web_CMS.App_Code;
 using Web_CMS.HelperClass;
+using log4net;
 
 namespace Web_CMS.Areas.Admin.Controllers
 {
     [CustomAuthorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public ActionResult Index()
         {
             return View();
@@ -40,6 +43,7 @@ namespace Web_CMS.Areas.Admin.Controllers
                         context.ObjRegisterUser.Add(objNewUser);
                         context.SaveChanges();
                         ModelState.Clear();
+                        log.Info("User logged in.");
                         return RedirectToAction("LogIn", "Login");
                     }
                     ViewBag.ErrorMessage = "User Allredy Exixts!!!!!!!!!!";
