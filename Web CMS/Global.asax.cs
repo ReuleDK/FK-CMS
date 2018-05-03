@@ -27,6 +27,20 @@ namespace Web_CMS
             log.Error("Unhandled exception logged in Application." + Environment.NewLine +
                 "User : " + "TODO" + Environment.NewLine +
                 "Page : " + HttpContext.Current.Request.Url.AbsoluteUri, exception);
+
+            HttpException httpException = exception as HttpException;
+            if (httpException != null) {
+                string action;
+                switch (httpException.GetHttpCode()) {
+                    case 403: action = "HttpError403"; break;
+                    case 404: action = "HttpError404"; break;
+                    case 500: action = "HttpError500"; break;
+                    default: action = "General"; break;
+                }
+                Server.ClearError();
+
+                Response.Redirect(String.Format("~/ErrorPage/{0}/?message={1}", action, exception.Message));
+            }
         }
     }
 }

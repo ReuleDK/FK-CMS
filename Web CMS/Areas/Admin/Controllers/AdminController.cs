@@ -8,19 +8,24 @@ using log4net;
 
 namespace Web_CMS.Areas.Admin.Controllers
 {
-    [CustomAuthorize(Roles = "Admin")]
+
     public class AdminController : Controller
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        [CustomAuthorize]
         public ActionResult Index()
         {
             return View();
         }
+
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Registration()
         {
             return View();
         }
+
+        [CustomAuthorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Registration(EntityCms.User objNewUser, int Role)
