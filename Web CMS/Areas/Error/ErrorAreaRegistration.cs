@@ -7,7 +7,7 @@ namespace Web_CMS.Areas.Error {
         public override void RegisterArea(AreaRegistrationContext context) {
             context.MapRoute(
                 "Error_default",
-                "{controller}/{action}/{id}",
+                "Error/{controller}/{action}/{id}",
                 new { controller = "Error", action = "HttpError404", id = UrlParameter.Optional }
             );
         }

@@ -6,7 +6,7 @@ using log4net;
 
 namespace Web_CMS {
     public class MvcApplication : HttpApplication {
-        ILog log = LogManager.GetLogger(typeof(MvcApplication));
+        readonly ILog log = LogManager.GetLogger(typeof(MvcApplication));
 
         public override void Init() { base.Init(); }
 
@@ -16,14 +16,14 @@ namespace Web_CMS {
             log4net.Config.XmlConfigurator.Configure();
             GlobalFilters.Filters.Add(new ExecuteCustomErrorHandler());
         }
+
         protected void Application_Error(object sender, EventArgs e) {
             var exception = this.Server.GetLastError();
             log.Error("Unhandled exception logged in Application." + Environment.NewLine +
                 "User : " + "TODO" + Environment.NewLine +
                 "Page : " + HttpContext.Current.Request.Url.AbsoluteUri, exception);
 
-            HttpException httpException = exception as HttpException;
-            if (httpException != null) {
+            if (exception is HttpException httpException) {
                 string action;
                 switch (httpException.GetHttpCode()) {
                     case 403: action = "HttpError403"; break;
@@ -33,7 +33,7 @@ namespace Web_CMS {
                 }
                 Server.ClearError();
 
-                Response.Redirect(String.Format("~/Areas/Error/{0}/?message={1}", action, exception.Message));
+                Response.Redirect(String.Format("~/Error/{0}/?message={1}", action, exception.Message));
             }
         }
     }
