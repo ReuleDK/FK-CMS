@@ -7,7 +7,7 @@ namespace Web_CMS.Areas.Admin {
         public override void RegisterArea(AreaRegistrationContext context) {
             context.MapRoute(
                 "Admin_default",
-                "Admin/{controller}/{action}/{id}",
+                "{controller}/{action}/{id}",
                 new { controller = "Login", action = "Login", id = UrlParameter.Optional }
             );
         }

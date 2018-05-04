@@ -10,9 +10,6 @@ namespace Web_CMS.Areas.Admin.Controllers {
     public class AdminController : Controller {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        [CustomAuthorize]
-        public ActionResult Index() { return View(); }
-
         [CustomAuthorize(Roles = "Admin")]
         public ActionResult Registration() { return View(); }
 
@@ -38,7 +35,7 @@ namespace Web_CMS.Areas.Admin.Controllers {
                         log.Info("User logged in.");
                         return RedirectToAction("LogIn", "Login");
                     }
-                    ViewBag.ErrorMessage = "User Allredy Exixts!!!!!!!!!!";
+                    ViewBag.ErrorMessage = "User Already Exists!";
                     return View();
                 }
             } catch (Exception e) {

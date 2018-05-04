@@ -102,7 +102,6 @@
     <Content Include="Views\ErrorPage\NotFound.cshtml" />
     <Content Include="Views\ErrorPage\ServerError.cshtml" />
     <Content Include="Views\ErrorPage\UnauthorizedAccess.cshtml" />
-    <Content Include="Areas\Places\Index.cshtml" />
     <Content Include="Areas\Shared\_Layout.cshtml" />
     <Content Include="Content\css\animate\animate.min.css" />
     <Content Include="Content\css\blueimp\blueimp-gallery.min.css" />
@@ -215,6 +214,7 @@
     <Content Include="Content\js\plugins\jquery\jquery.min.js" />
     <Content Include="Content\js\plugins\jquery\jquery-ui.min.js" />
     <Content Include="Content\js\plugins.js" />
+    <Content Include="Areas\Places\Views\Places\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -230,11 +230,12 @@
     <Compile Include="App_Code\CustomAuthorizeAttribute.cs" />
     <Compile Include="App_Code\ExecuteCustomErrorHandler.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
+    <Compile Include="Areas\Places\Controller\PlacesController.cs" />
+    <Compile Include="Areas\Places\PlacesAreaRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -252,6 +253,9 @@
     <Folder Include="Content\css\" />
     <Folder Include="Content\img\" />
     <Folder Include="Content\js\" />
+    <Folder Include="Areas\Places\Controller\" />
+    <Folder Include="Areas\Places\Views\" />
+    <Folder Include="Areas\Places\Views\Places\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
