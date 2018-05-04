@@ -202,6 +202,19 @@
     <Content Include="Views\ErrorPage\NotFound.cshtml" />
     <Content Include="Views\ErrorPage\ServerError.cshtml" />
     <Content Include="Views\ErrorPage\UnauthorizedAccess.cshtml" />
+    <Content Include="Areas\Places\Index.cshtml" />
+    <Content Include="Areas\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\css\jquery\jquery-ui.min.css" />
+    <Content Include="Areas\Admin\css\fontawesome\font-awesome.min.css" />
+    <Content Include="Areas\Admin\css\summernote\summernote.css" />
+    <Content Include="Areas\Admin\css\codemirror\codemirror.css" />
+    <Content Include="Areas\Admin\css\nvd3\nv.d3.css" />
+    <Content Include="Areas\Admin\css\mcustomscrollbar\jquery.mCustomScrollbar.css" />
+    <Content Include="Areas\Admin\css\fullcalendar\fullcalendar.css" />
+    <Content Include="Areas\Admin\css\blueimp\blueimp-gallery.min.css" />
+    <Content Include="Areas\Admin\css\rickshaw\rickshaw.css" />
+    <Content Include="Areas\Admin\css\dropzone\dropzone.css" />
+    <Content Include="Areas\Admin\css\animate\animate.min.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -220,7 +233,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Registration.cshtml" />
@@ -235,8 +247,20 @@
     <Folder Include="App_Code\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\ErrorPage\" />
+    <Folder Include="Areas\Places\" />
+    <Folder Include="Areas\Shared\" />
+    <Folder Include="Areas\Admin\css\jquery\" />
+    <Folder Include="Areas\Admin\css\fontawesome\" />
+    <Folder Include="Areas\Admin\css\summernote\" />
+    <Folder Include="Areas\Admin\css\codemirror\" />
+    <Folder Include="Areas\Admin\css\nvd3\" />
+    <Folder Include="Areas\Admin\css\mcustomscrollbar\" />
+    <Folder Include="Areas\Admin\css\fullcalendar\" />
+    <Folder Include="Areas\Admin\css\blueimp\" />
+    <Folder Include="Areas\Admin\css\rickshaw\" />
+    <Folder Include="Areas\Admin\css\dropzone\" />
+    <Folder Include="Areas\Admin\css\animate\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -6,13 +6,15 @@ namespace Web_CMS.Controllers
     {
         public ActionResult HttpError403(string message)
         {
-            return View("UnauthorizedAccess", message);
+            return View("~/Views/ErrorPage/UnauthorizedAccess", message);
         }
         public ActionResult HttpError404(string message) {
-            return View("NotFound", message);
+            string physicalWebRootPath = Server.MapPath("~/Views/ErrorPage");
+
+            return View("~/Views/ErrorPage/NotFound", message);
         }
         public ActionResult HttpError500(string message) {
-            return View("ServerError", message);
+            return View("~/Views/ErrorPage/ServerError", message);
         }
     }
 }
