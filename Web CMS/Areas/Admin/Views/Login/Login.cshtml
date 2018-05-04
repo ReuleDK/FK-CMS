@@ -1,16 +1,9 @@
-﻿@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html lang="en" class="body-full-height">
+﻿<html lang="en" class="body-full-height">
 <head>
-    <!-- META SECTION -->
     <title>Admin Login - Web CMS</title>
     <link rel="icon" href="@Web_CMS.HelperClass.Helper.ToAbsoluteUrl("Areas/favicon.ico")" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" id="theme" href="@Web_CMS.HelperClass.Helper.ToAbsoluteUrl("Areas/Admin/css/theme-default.css")" />
-    <link rel="stylesheet" type="text/css" id="theme" href="@Web_CMS.HelperClass.Helper.ToAbsoluteUrl("Areas/Admin/css/bootstrap/bootstrap.min.css")" />
+    <link rel="stylesheet" type="text/css" id="theme" href="@Web_CMS.HelperClass.Helper.ToAbsoluteUrl("Content/css/theme-default.css")" />
+    <link rel="stylesheet" type="text/css" id="theme" href="@Web_CMS.HelperClass.Helper.ToAbsoluteUrl("Content/css/bootstrap/bootstrap.min.css")" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
@@ -38,7 +31,7 @@
                     @ViewBag.ErrorMessage
                 </div>
             }
-            <div class="login-logo"></div>
+            <!--<div class="login-logo"></div>-->
             <div class="login-body">
                 <div class="login-title"><strong>Log In</strong> to your account</div>
                 <div class="form-horizontal">
@@ -57,9 +50,6 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6">
-                                <a href="#" class="btn btn-link btn-block">Forgot your password?</a>
-                            </div>
-                            <div class="col-md-6">
                                 <button class="btn btn-info btn-block">Log In</button>
                             </div>
                         </div>
@@ -68,7 +58,7 @@
             </div>
             <div class="login-footer">
                 <div class="pull-left">
-                    &copy; 2017 FK
+                    &copy; 2018 FK
                 </div>
                 <div class="pull-right">
                     <a href="#">About</a> |
@@ -79,10 +69,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        $('.close').on('click', function (c) {
-            $(this).parent().fadeOut("slow");
-        });
+        $('.close').on('click', function (c) { $(this).parent().fadeOut("slow"); });
     </script>
-
 </body>
 </html>

@@ -28,7 +28,7 @@ html * {
     outline: medium none !important;
 }
 html, body {
-    background: #f5f5f5 url("../img/bg.png") repeat scroll left top;
+    /*background: #f5f5f5 url("../img/bg.png") repeat scroll left top;*/
     color: #22262e;
     font-family: "Open Sans",sans-serif;
     font-size: 12px;
@@ -77,10 +77,10 @@ html, body {
     width: 50px;
 }
 .page-container .page-content {
-    background: #f5f5f5 url("../img/bg.png") repeat scroll left top;
+    /*background: #f5f5f5 url("../img/bg.png") repeat scroll left top;*/
     margin-left: 220px;
     min-height: 100%;
-    position: relative;
+    position: relative
 }
 .page-container .page-content::before, .page-container .page-content::after {
     content: "";
@@ -90,10 +90,10 @@ html, body {
     clear: both;
 }
 .page-container .page-content .content-frame {
-    background: #f5f5f5 url("../img/bg.png") repeat scroll left top;
+    /*background: #f5f5f5 url("../img/bg.png") repeat scroll left top;*/
     float: left;
     position: relative;
-    width: 100%;
+    width: 100%
 }
 .page-container .page-content .content-frame .content-frame-top {
     background: rgba(0, 0, 0, 0.02) none repeat scroll 0 0;
@@ -208,7 +208,7 @@ html, body {
     padding-right: 50px;
 }
 body.page-container-boxed {
-    background: rgba(0, 0, 0, 0) url("../img/backgrounds/wall_1.jpg") no-repeat fixed left top;
+    /*background: rgba(0, 0, 0, 0) url("../img/backgrounds/wall_1.jpg") no-repeat fixed left top;*/
     padding: 20px 0;
 }
 body.page-container-boxed .page-container {
@@ -3252,7 +3252,7 @@ td.dataTables_empty {
     font-weight: 700;
 }
 .login-container {
-    background: #1b1e24 url("../img/bg.png") repeat scroll left top;
+    background: #1b1e24 repeat scroll left top;
     float: left;
     min-height: 100%;
     width: 100%;
@@ -3335,6 +3335,9 @@ td.dataTables_empty {
 .login-container .login-box .login-body .login-subtitle a {
     color: #1caf9a;
 }
+.login-footer {
+    font-size: 13px;
+}
 .login-container .login-box .login-footer {
     color: #fff;
     float: left;
@@ -3345,14 +3348,10 @@ td.dataTables_empty {
     color: #fff;
 }
 .login-container.lightmode {
-    background: rgba(0, 0, 0, 0) url("../img/backgrounds/wall_1.jpg") no-repeat scroll left top;
+    /*background: rgba(0, 0, 0, 0) url("../img/backgrounds/wall_1.jpg") no-repeat scroll left top;*/
 }
 .login-container.lightmode .login-box .login-body {
     background: rgba(255, 255, 255, 0.2) none repeat scroll 0 0;
-}
-.login-container.lightmode .login-box .login-body .form-control {
-    background: rgba(255, 255, 255, 0.4) none repeat scroll 0 0;
-    color: #333;
 }
 .login-container.lightmode .login-box .login-subtitle a {
     color: #1b1e24;
