@@ -9,7 +9,7 @@ namespace Web_CMS.Areas.Admin {
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { controller = "Login", action = "Login", id = UrlParameter.Optional },
-                new string[] { "Web_CMS.Areas.Admin.Controllers" }
+                new [] { "Web_CMS.Areas.Admin.Controllers" }
             );
         }
     }
