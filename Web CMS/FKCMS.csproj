@@ -102,7 +102,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Shared\_Layout.cshtml" />
     <Content Include="Content\css\animate\animate.min.css" />
     <Content Include="Content\css\blueimp\blueimp-gallery.min.css" />
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
@@ -220,6 +219,7 @@
     <Content Include="Views\Error\ServerError.cshtml" />
     <Content Include="Views\Error\UnauthorizedAccess.cshtml" />
     <Content Include="Views\web.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -252,7 +252,6 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="Areas\Places\" />
-    <Folder Include="Areas\Shared\" />
     <Folder Include="Content\" />
     <Folder Include="Content\css\" />
     <Folder Include="Content\img\" />
@@ -261,6 +260,7 @@
     <Folder Include="Areas\Places\Views\" />
     <Folder Include="Areas\Places\Views\Places\" />
     <Folder Include="Views\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
