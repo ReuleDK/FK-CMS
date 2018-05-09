@@ -10,11 +10,16 @@ namespace Web_CMS.App_Code {
 		public CustomAuthorizeAttribute(params Roles[] roles) { UserRoles = roles; }
 
 		protected override bool AuthorizeCore(HttpContextBase httpContext) {
-            var userName = HttpContext.Current.Session["UserName"].ToString();
-            
 			int[] roleNumbers = UserRoles.Cast<int>().ToArray();
-			bool authorized = AuthHelper.CheckUser(userName, roleNumbers);
-			if (authorized) return true;
+            
+			try {
+				var userName = HttpContext.Current.Session["UserName"].ToString();
+				bool authorized = AuthHelper.CheckUser(userName, roleNumbers);
+				if (authorized) return true;
+			} catch {
+				throw new HttpException(500, "Error while checking user rights.");
+			}
+         
 			throw new HttpException(403, "No right rights.");
         }
        

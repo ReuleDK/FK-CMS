@@ -9,7 +9,7 @@ namespace EntityCms.Context
             Database.SetInitializer(new CmsDbInitializer());
         }
 
-        public DbSet<User> ObjRegisterUser { get; set; }
+        public DbSet<User> ObjUsers { get; set; }
         public DbSet<Role> ObjRoles { get; set; }
     }
 }

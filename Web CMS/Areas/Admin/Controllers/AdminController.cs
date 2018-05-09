@@ -19,7 +19,7 @@ namespace Web_CMS.Areas.Admin.Controllers {
         public ActionResult Registration(EntityCms.User objNewUser, int Role) {
             try {
                 using (var context = new EntityCms.Context.CmsDbContext()) {
-                    var chkUser = (from s in context.ObjRegisterUser where s.UserName == objNewUser.UserName || s.EmailId == objNewUser.EmailId select s).FirstOrDefault();
+                    var chkUser = (from s in context.ObjUsers where s.UserName == objNewUser.UserName || s.EmailId == objNewUser.EmailId select s).FirstOrDefault();
                     if (chkUser == null) {
                         var keyNew = Helper.GeneratePassword(10);
                         var password = Helper.EncodePassword(objNewUser.Password, keyNew);
@@ -28,7 +28,7 @@ namespace Web_CMS.Areas.Admin.Controllers {
                         objNewUser.Password = password;
                         objNewUser.VCode = keyNew;
 						objNewUser.Roles = new List<EntityCms.Role> { existingRole };
-						context.ObjRegisterUser.Add(objNewUser);
+						context.ObjUsers.Add(objNewUser);
                         context.SaveChanges();
                         ModelState.Clear();
                         log.Info("User succesfully registered.");

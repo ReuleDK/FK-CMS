@@ -15,15 +15,15 @@ namespace Web_CMS.Areas.Admin.Controllers {
         public ActionResult LogIn(string userName, string password) {
             try {
                 using (var context = new CmsDbContext()) {
-                    var getUser = (from s in context.ObjRegisterUser where s.UserName == userName || s.EmailId == userName select s).FirstOrDefault();
+                    var getUser = (from s in context.ObjUsers where s.UserName == userName || s.EmailId == userName select s).FirstOrDefault();
                     if (getUser != null) {
                         var hashCode = getUser.VCode;
                         //Password Hasing Process Call Helper Class Method
                         var encodingPasswordString = Helper.EncodePassword(password, hashCode);
                         //Check Login Detail User Name Or Password
-                        var query = (from s in context.ObjRegisterUser where (s.UserName == userName || s.EmailId == userName) && s.Password.Equals(encodingPasswordString) select s).FirstOrDefault();
+                        var query = (from s in context.ObjUsers where (s.UserName == userName || s.EmailId == userName) && s.Password.Equals(encodingPasswordString) select s).FirstOrDefault();
                         if (query != null) {
-							Session["UserName"] = userName;
+							this.Session["UserName"] = userName;
 
                             return RedirectToAction("Index", "Places", new { area = "Places" });
                         }
