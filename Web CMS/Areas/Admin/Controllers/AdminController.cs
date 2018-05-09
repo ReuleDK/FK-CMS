@@ -8,12 +8,12 @@ using log4net;
 
 namespace Web_CMS.Areas.Admin.Controllers {
     public class AdminController : Controller {
-        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        [CustomAuthorize(Roles = "Admin")]
+		[CustomAuthorize(UserRoles = new Roles[] { Roles.Admin })]
         public ActionResult Registration() { return View(); }
 
-        [CustomAuthorize(Roles = "Admin")]
+		[CustomAuthorize(UserRoles = new Roles[] { Roles.Admin })]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Registration(EntityCms.User objNewUser, int Role) {
@@ -27,12 +27,11 @@ namespace Web_CMS.Areas.Admin.Controllers {
 
                         objNewUser.Password = password;
                         objNewUser.VCode = keyNew;
-                        objNewUser.Roles = new List<EntityCms.Role>();
-                        objNewUser.Roles.Add(existingRole);
-                        context.ObjRegisterUser.Add(objNewUser);
+						objNewUser.Roles = new List<EntityCms.Role> { existingRole };
+						context.ObjRegisterUser.Add(objNewUser);
                         context.SaveChanges();
                         ModelState.Clear();
-                        log.Info("User logged in.");
+                        log.Info("User succesfully registered.");
                         return RedirectToAction("LogIn", "Login");
                     }
                     ViewBag.ErrorMessage = "User Already Exists!";

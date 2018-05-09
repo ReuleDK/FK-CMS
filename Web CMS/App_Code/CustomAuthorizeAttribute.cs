@@ -1,14 +1,23 @@
-﻿using System.Web;
+﻿using System;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using EntityCms;
 
 namespace Web_CMS.App_Code {
-    public class CustomAuthorizeAttribute : AuthorizeAttribute {
-        public CustomAuthorizeAttribute(params string[] roles) { }
+	[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    public class CustomAuthorizeAttribute : AuthorizeAttribute {      
+		public CustomAuthorizeAttribute(params Roles[] roles) { UserRoles = roles; }
 
-        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext) {
-            if (!filterContext.HttpContext.User.Identity.IsAuthenticated) {
-                throw new HttpException(403, "No right rights.");
-            }
+		protected override bool AuthorizeCore(HttpContextBase httpContext) {
+            var userName = HttpContext.Current.Session["UserName"].ToString();
+            
+			int[] roleNumbers = UserRoles.Cast<int>().ToArray();
+			bool authorized = AuthHelper.CheckUser(userName, roleNumbers);
+			if (authorized) return true;
+			throw new HttpException(403, "No right rights.");
         }
+       
+		public Roles[] UserRoles { get; set; }
     }
 }

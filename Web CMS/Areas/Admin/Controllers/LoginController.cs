@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 using Web_CMS.HelperClass;
 
 namespace Web_CMS.Areas.Admin.Controllers {
@@ -22,6 +23,8 @@ namespace Web_CMS.Areas.Admin.Controllers {
                         //Check Login Detail User Name Or Password
                         var query = (from s in context.ObjRegisterUser where (s.UserName == userName || s.EmailId == userName) && s.Password.Equals(encodingPasswordString) select s).FirstOrDefault();
                         if (query != null) {
+							Session["UserName"] = userName;
+
                             return RedirectToAction("Index", "Places", new { area = "Places" });
                         }
                         ViewBag.ErrorMessage = "Invalid User Name or Password";

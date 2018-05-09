@@ -38,9 +38,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityCms">
-      <HintPath>..\EntityCms\bin\Debug\EntityCms.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -237,6 +234,7 @@
     <Compile Include="Areas\Places\Controllers\PlacesController.cs" />
     <Compile Include="Areas\Places\PlacesAreaRegistration.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Models\Roles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -261,9 +259,16 @@
     <Folder Include="Areas\Places\Views\Places\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Shared\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityCms\EntityCms.csproj">
+      <Project>{1FD71FFF-82BA-46E7-A7EC-FDC2C9AA0AA5}</Project>
+      <Name>EntityCms</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
