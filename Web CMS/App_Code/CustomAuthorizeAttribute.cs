@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using EntityCms;
 
 namespace Web_CMS.App_Code {
@@ -9,18 +10,20 @@ namespace Web_CMS.App_Code {
     public class CustomAuthorizeAttribute : AuthorizeAttribute {      
 		public CustomAuthorizeAttribute(params Roles[] roles) { UserRoles = roles; }
 
-		protected override bool AuthorizeCore(HttpContextBase httpContext) {
+		public override void OnAuthorization(AuthorizationContext filterContext) {
 			int[] roleNumbers = UserRoles.Cast<int>().ToArray();
             
 			try {
-				var userName = HttpContext.Current.Session["UserName"].ToString();
+				string userName = "";
+				if(HttpContext.Current.Session == null || HttpContext.Current.Session["UserName"] == null){
+					filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Login" }));
+					return;
+				}
 				bool authorized = AuthHelper.CheckUser(userName, roleNumbers);
-				if (authorized) return true;
-			} catch {
-				throw new HttpException(500, "Error while checking user rights.");
+				if (!authorized) throw new HttpException(403, "No right rights.");
+			} catch (Exception e) {
+				throw new HttpException(403, "Error concerning user rights. " + e.Message);
 			}
-         
-			throw new HttpException(403, "No right rights.");
         }
        
 		public Roles[] UserRoles { get; set; }
