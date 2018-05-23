@@ -7,13 +7,15 @@ namespace EntityCms {
 		public static bool CheckUser(string emailId, int[] roles) {
 			using (var context = new CmsDbContext()) {
 				try {
-                    var user = context.ObjUsers.Where(x => x.EmailId == emailId).SingleOrDefault();
-					if(user != null) {
-						int userId = user.UserId;
+                    var userFromDB = context.ObjUsers.Where(x => x.EmailId == emailId).SingleOrDefault();
+					if(userFromDB != null) {
+						int userId = userFromDB.UserId;
+
 						//check if user has one of the given rights
-						// source: https://stackoverflow.com/questions/30466696/query-a-many-to-many-relationship-with-linq-entity-framework-codefirst/30467114
-						var checkRole = context.ObjRoles.Where(x => roles.Contains(x.RoleId)).SelectMany(x => x.Users);
-						return true;
+                        // source: https://stackoverflow.com/questions/10505595/linq-many-to-many-relationship-how-to-write-a-correct-where-clause
+                        var checkRole = context.ObjUsers.Where(user => user.Roles.All(x => roles.Contains(x.RoleId))).Where(y => y.UserId == userId).SingleOrDefault();
+                        if(checkRole != null) return true;
+                        return false;
 					} else { return false; }
 				} catch (Exception e) {
 					throw e;
