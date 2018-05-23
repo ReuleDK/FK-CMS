@@ -19,6 +19,7 @@ namespace Web_CMS.App_Code {
 					filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Login" }));
 					return;
 				}
+                userName = HttpContext.Current.Session["UserName"].ToString();
 				bool authorized = AuthHelper.CheckUser(userName, roleNumbers);
 				if (!authorized) throw new HttpException(403, "No right rights.");
 			} catch (Exception e) {

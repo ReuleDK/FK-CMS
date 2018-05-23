@@ -23,7 +23,7 @@ namespace Web_CMS.Areas.Admin.Controllers {
                         //Check Login Detail User Name Or Password
                         var query = (from s in context.ObjUsers where (s.UserName == userName || s.EmailId == userName) && s.Password.Equals(encodingPasswordString) select s).FirstOrDefault();
                         if (query != null) {
-							this.Session["UserName"] = userName;
+							Session["UserName"] = userName;
 
                             return RedirectToAction("Index", "Places", new { area = "Places" });
                         }
