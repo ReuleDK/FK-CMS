@@ -38,16 +38,13 @@
                     </form>
                 </li>
                 <!-- END SEARCH -->
-
-                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-                {
+                <!-- LOG IN/SIGN OUT -->
                 <li class="xn-icon-button pull-right">
-                    @Html.ActionLink("Register", "Registration", "Admin")
-                </li>   
-                }
-                <!-- SIGN OUT -->
-                <li class="xn-icon-button pull-right">
-                    <a data-box="#mb-signout" class="mb-control" href="#"><span class="fa fa-sign-out"></span></a>
+                    @if (Session["UserName"] != null) {
+                        <a data-box="#mb-signout" class="mb-control" href="@Url.Action("Logout", null, new { area = "Admin", controller = "Login" }, Request.Url.Scheme)"><span class="fa fa-sign-out">Sign Out</span></a>
+                    } else {
+                        <a data-box="#mb-signout" class="mb-control" href="@Url.Action("Login", null, new { area = "Admin", controller = "Login" }, Request.Url.Scheme)"><span class="fa fa-sign-out">Log In</span></a>
+                    }
                 </li>
                 <!-- END SIGN OUT -->
             </ul>

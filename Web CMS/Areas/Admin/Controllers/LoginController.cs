@@ -38,5 +38,10 @@ namespace Web_CMS.Areas.Admin.Controllers {
                 return View();
             }
         }
+
+        public ActionResult LogOut() {
+            Session.Abandon();
+            return RedirectToAction("Login");
+        }
     }
 }
